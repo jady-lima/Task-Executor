@@ -5,7 +5,7 @@ public class Task {
     private double value;
 
     public Task(int taskId, double cost, int type, double value) {
-        TaskId = taskId;
+        this.TaskId = taskId;
         this.cost = cost;
         this.type = type;
         this.value = value;

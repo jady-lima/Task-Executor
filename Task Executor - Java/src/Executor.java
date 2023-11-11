@@ -33,18 +33,18 @@ public class Executor {
             cost = random.nextDouble(0.01);
             value = random.nextDouble(10);
 
-            type = random.nextInt(2);
-            /**
-            if(type == 0) {
+            if (random.nextInt(2) == 0) {
                 if (maxWriter > 0) {
+                    type = 0;
                     maxWriter--;
                 } else {
                     type = 1;
                 }
+            } else {
+                type = 1;
             }
-             */
 
-            Task task = new Task(taskID, cost, type , value);
+            Task task = new Task(taskID, cost, type, value);
             tasks.offer(task);
             taskID++;
         }
@@ -54,7 +54,7 @@ public class Executor {
     {
         while (!tasks.isEmpty()) {
             Task task = tasks.poll();
-            printTask(task);
+            //printTask(task);
         }
     }
 
@@ -69,5 +69,25 @@ public class Executor {
                 , task.getTaskId(), task.getCost(), task.getType(), task.getValue());
         System.out.println("--------------------------------------------------");
 
+    }
+
+    public Queue<Task> getTasks()
+    {
+        return tasks;
+    }
+
+    public void setTasks(Queue<Task> tasks)
+    {
+        this.tasks = tasks;
+    }
+
+    public Queue<Result> getResults()
+    {
+        return results;
+    }
+
+    public void setResults(Queue<Result> results)
+    {
+        this.results = results;
     }
 }
