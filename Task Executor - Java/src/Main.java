@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,26 +26,16 @@ public class Main {
         }
 
         numberTask = (int) Math.pow(10, N);
-        maxReader = (int) numberTask - (numberTask * E) / 10;
+        maxReader = (int) numberTask - (numberTask * E) / 100;
         maxWriter = (numberTask - maxReader);
 
         executor.createTasks((int) numberTask, (int) maxWriter);
 
-        int part = (int) (numberTask / T);
-        Thread[] threads = new Worker[T];
-        for (int i = 0; i < T; i++) {
-            threads[i] = new Worker(part, i);
-            threads[i].start();
-        }
-
-        for (int i = 0; i < T; i++)
-        {
-            try{
-                threads[i].join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
+        long startTime = System.nanoTime();
+        executor.createWorkers(numberTask, T);
+        long endTime = System.nanoTime();
+        long time = endTime - startTime;
+        double finalTime = (double) time / 1000000000.0;
+        System.out.println("Time: " + finalTime);
     }
 }

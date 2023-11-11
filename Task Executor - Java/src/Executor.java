@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class Executor {
     private static Executor instance;
@@ -14,8 +12,8 @@ public class Executor {
 
     public Executor()
     {
-        tasks = new LinkedList<Task>();
-        results = new LinkedList<Result>();
+        tasks = new LinkedList<>();
+        results = new LinkedList<>();
     }
 
     public static Executor getInstance()
@@ -45,22 +43,39 @@ public class Executor {
             }
 
             Task task = new Task(taskID, cost, type, value);
-            tasks.offer(task);
+            tasks.add(task);
             taskID++;
+        }
+    }
+
+    public void createWorkers(double numberTask, int T)
+    {
+        int part = (int) (numberTask / T);
+        Thread[] threads = new Worker[T];
+        for (int i = 0; i < T; i++) {
+            for (int j = i * part; j < (i + 1) * part; j++) {
+                Task task = tasks.poll();
+                threads[i] = new Worker(part, j, task);
+                threads[i].start();
+            }
+        }
+
+        for (int i = 0; i < T; i++)
+        {
+            try{
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void readTasks()
     {
-        while (!tasks.isEmpty()) {
+        for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.poll();
-            //printTask(task);
+            printTask(task);
         }
-    }
-
-    public void newResult(Result result)
-    {
-        results.offer(result);
     }
 
     public void printTask(Task task)
@@ -69,6 +84,12 @@ public class Executor {
                 , task.getTaskId(), task.getCost(), task.getType(), task.getValue());
         System.out.println("--------------------------------------------------");
 
+    }
+
+
+    public void addResult(Result result)
+    {
+        results.add(result);
     }
 
     public Queue<Task> getTasks()

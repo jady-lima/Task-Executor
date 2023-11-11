@@ -3,7 +3,14 @@ import java.sql.Date;
 public class Result {
     private int resultId;
     private double result;
-    private Date time;
+    private double time;
+
+    public Result(int resultId, double result, double time)
+    {
+        this.resultId = resultId;
+        this.result = result;
+        this.time = time;
+    }
 
     public int getResultId()
     {
@@ -25,12 +32,12 @@ public class Result {
         this.result = result;
     }
 
-    public Date getTime()
+    public double getTime()
     {
         return time;
     }
 
-    public void setTime(Date time)
+    public void setTime(double time)
     {
         this.time = time;
     }
