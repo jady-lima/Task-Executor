@@ -17,45 +17,38 @@ public class Worker extends Thread{
     @Override
     public void run() {
         try {
+            long startTime = System.nanoTime();
 
-            //for (int i = (workerID * part); i < ((workerID + 1) * part);) {
-                long startTime = System.nanoTime();
+            if (task != null) {
 
-                //Task task = executor.getTasks().poll();
+                synchronized (file) {
 
-                if (task != null) {
+                    if (task.getType() == 0) {
+                        Thread.sleep((long) task.getCost());
 
-                    synchronized (file) {
+                        file.setData(task.getValue() + file.getData());
 
-                        if (task.getType() == 0) {
-                            //Thread.sleep((long) task.getCost());
+                        long endTime = System.nanoTime();
+                        long time = endTime - startTime;
+                        double finalTime = (double) time / 1000000.0;
 
-                            file.setData(task.getValue() + file.getData());
+                        Result result = new Result(task.getTaskId(), file.getData(), finalTime);
+                        executor.addResult(result);
 
-                            long endTime = System.nanoTime();
-                            long time = endTime - startTime;
-                            double finalTime = (double) time / 1000000.0;
+                    } else {
+                        System.out.println("File: " + file.getData());
 
-                            Result result = new Result(task.getTaskId(), file.getData(), finalTime);
-                            executor.addResult(result);
+                        long endTime = System.nanoTime();
+                        long time = endTime - startTime;
+                        double finalTime = (double) time / 1000000.0;
 
-                        } else {
-                            System.out.println("File: " + file.getData());
-
-                            long endTime = System.nanoTime();
-                            long time = endTime - startTime;
-                            double finalTime = (double) time / 1000000.0;
-
-                            Result result = new Result(task.getTaskId(), file.getData(), finalTime);
-                            executor.addResult(result);
-                        }
-
-                        //i++;
+                        Result result = new Result(task.getTaskId(), file.getData(), finalTime);
+                        executor.addResult(result);
                     }
 
                 }
 
-            //}
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

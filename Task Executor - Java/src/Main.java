@@ -35,7 +35,7 @@ public class Main {
         executor.createWorkers(numberTask, T);
         long endTime = System.nanoTime();
         long time = endTime - startTime;
-        double finalTime = (double) time / 1000000000.0;
+        double finalTime = (double) time / 10000000000.0;
         System.out.println("Time: " + finalTime);
     }
 }
