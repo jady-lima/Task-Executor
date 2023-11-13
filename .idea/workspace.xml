@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7089acf-997b-456b-94a4-a5d56d35d442" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task Executor - Java/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Task Executor - Java/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task Executor - Java/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task Executor - Java/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task Executor - Java/src/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Task Executor - Java/src/Worker.java" afterDir="false" />
-    </list>
+    <list default="true" id="c7089acf-997b-456b-94a4-a5d56d35d442" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,18 +20,27 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2XDlsCTN7PLq0zSg3A6ANXykRAo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jadyl/jadya/OneDrive/Documentos/GitHub/Task-Executor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/jadyl/jadya/OneDrive/Documentos/GitHub/Task-Executor/Task Executor - Java"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jadyl\jadya\OneDrive\Documentos\GitHub\Task-Executor\Results\Java" />
+      <recent name="C:\Users\jadyl\jadya\OneDrive\Documentos\GitHub\Task-Executor\Results\Go" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
