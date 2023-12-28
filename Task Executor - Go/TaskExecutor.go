@@ -1,11 +1,15 @@
 package main
 
+import _ "net/http/pprof"
+
 import (
 	"fmt"
 	"math"
 	"math/rand"
 	"sync"
 	"time"
+	"log"
+	"net/http"
 )
 
 var TaskId int = 1
@@ -109,6 +113,10 @@ func worker(task Task, channelResults chan Result, waitGroup *sync.WaitGroup) {
 }
 
 func main() {
+	go func() {
+		log.Println(http.ListenAndServe(":6060", nil))
+	}()
+
 	var N int
 	var T int
 	var E int
@@ -149,4 +157,13 @@ func main() {
 	endTime := time.Now()
 	time := endTime.Sub(startTime)
 	fmt.Println("Time: ", time)
+
+	err := http.ListenAndServe("localhost:6061", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	//time.Sleep(30 * time.Second)
+
+	select {}
 }
